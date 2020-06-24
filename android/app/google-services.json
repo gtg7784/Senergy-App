@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "122717582205",
+    "firebase_url": "https://senergy-9219c.firebaseio.com",
+    "project_id": "senergy-9219c",
+    "storage_bucket": "senergy-9219c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122717582205:android:a795b95e6c8af423abd214",
+        "android_client_info": {
+          "package_name": "vision.emotion.senergy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122717582205-d8anbe5kcieqahv9fgso5vou5hc08c5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK_nf-9L2E-SMehib6ASH4vb4bpitF5R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122717582205-d8anbe5kcieqahv9fgso5vou5hc08c5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
