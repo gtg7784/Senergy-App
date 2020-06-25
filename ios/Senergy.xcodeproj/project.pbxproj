@@ -19,6 +19,10 @@
 		2DCD954D1E0B4F2C00145EB5 /* SenergyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SenergyTests.m */; };
 		54259CF0E81DC6A44DE71B39 /* libPods-Senergy-SenergyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D83559750CBF346F8C306DCE /* libPods-Senergy-SenergyTests.a */; };
 		69CB4726C24E93861C181835 /* libPods-Senergy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF4630D63113D980AFA8BB3 /* libPods-Senergy.a */; };
+		9D073D695FBBB7126215F918 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1E199FBB3F9F427C4F3DE4 /* libPods-OneSignalNotificationServiceExtension.a */; };
+		BB67E5F424A4B46900AADBE1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB67E5F324A4B46900AADBE1 /* HealthKit.framework */; };
+		BB67E5FC24A4B4B400AADBE1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67E5FB24A4B4B400AADBE1 /* NotificationService.swift */; };
+		BB67E60024A4B4B400AADBE1 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BB67E5F924A4B4B400AADBE1 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E984A5EC581DCEB8A25FC888 /* libPods-Senergy-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A90786AF97DDB456D94106F9 /* libPods-Senergy-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -37,13 +41,36 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "Senergy-tvOS";
 		};
+		BB67E5FE24A4B4B400AADBE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB67E5F824A4B4B400AADBE1;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB67E60424A4B4B400AADBE1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BB67E60024A4B4B400AADBE1 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* SenergyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SenergyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SenergyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SenergyTests.m; sourceTree = "<group>"; };
+		0B1E199FBB3F9F427C4F3DE4 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		134C8C28763F9E836F0832AA /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Senergy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Senergy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Senergy/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Senergy/AppDelegate.m; sourceTree = "<group>"; };
@@ -56,11 +83,17 @@
 		2D02E47B1E0B4A5D006451C7 /* Senergy-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Senergy-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Senergy-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Senergy-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED9DA921F6F8A415B80E429 /* Pods-Senergy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senergy.debug.xcconfig"; path = "Target Support Files/Pods-Senergy/Pods-Senergy.debug.xcconfig"; sourceTree = "<group>"; };
+		31E6A6F0272879F1F5EBBE5E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		59B8A4F8DED5D1CFA6F60A20 /* libPods-Senergy-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senergy-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD4F5B12AB7C2CF6C417EE7 /* Pods-Senergy-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senergy-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Senergy-tvOSTests/Pods-Senergy-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		91E3384396A81518CA2E4071 /* Pods-Senergy-SenergyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senergy-SenergyTests.debug.xcconfig"; path = "Target Support Files/Pods-Senergy-SenergyTests/Pods-Senergy-SenergyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A90786AF97DDB456D94106F9 /* libPods-Senergy-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senergy-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF4630D63113D980AFA8BB3 /* libPods-Senergy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senergy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB67E5F224A4B45200AADBE1 /* Senergy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Senergy.entitlements; path = Senergy/Senergy.entitlements; sourceTree = "<group>"; };
+		BB67E5F324A4B46900AADBE1 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		BB67E5F924A4B4B400AADBE1 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB67E5FB24A4B4B400AADBE1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		BB67E5FD24A4B4B400AADBE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFC1EFD7015472F57B4804E5 /* Pods-Senergy-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senergy-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Senergy-tvOSTests/Pods-Senergy-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE36F6375E5165A00737B8FE /* Pods-Senergy-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senergy-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Senergy-tvOS/Pods-Senergy-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D83559750CBF346F8C306DCE /* libPods-Senergy-SenergyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senergy-SenergyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69CB4726C24E93861C181835 /* libPods-Senergy.a in Frameworks */,
+				BB67E5F424A4B46900AADBE1 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +133,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E984A5EC581DCEB8A25FC888 /* libPods-Senergy-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB67E5F624A4B4B400AADBE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D073D695FBBB7126215F918 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +167,7 @@
 		13B07FAE1A68108700A75B9A /* Senergy */ = {
 			isa = PBXGroup;
 			children = (
+				BB67E5F224A4B45200AADBE1 /* Senergy.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -139,12 +182,14 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB67E5F324A4B46900AADBE1 /* HealthKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				ADF4630D63113D980AFA8BB3 /* libPods-Senergy.a */,
 				D83559750CBF346F8C306DCE /* libPods-Senergy-SenergyTests.a */,
 				59B8A4F8DED5D1CFA6F60A20 /* libPods-Senergy-tvOS.a */,
 				A90786AF97DDB456D94106F9 /* libPods-Senergy-tvOSTests.a */,
+				0B1E199FBB3F9F427C4F3DE4 /* libPods-OneSignalNotificationServiceExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +207,7 @@
 				13B07FAE1A68108700A75B9A /* Senergy */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SenergyTests */,
+				BB67E5FA24A4B4B400AADBE1 /* OneSignalNotificationServiceExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E4595E6EBA62F7D252686A00 /* Pods */,
@@ -178,8 +224,18 @@
 				00E356EE1AD99517003FC87E /* SenergyTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* Senergy-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* Senergy-tvOSTests.xctest */,
+				BB67E5F924A4B4B400AADBE1 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BB67E5FA24A4B4B400AADBE1 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				BB67E5FB24A4B4B400AADBE1 /* NotificationService.swift */,
+				BB67E5FD24A4B4B400AADBE1 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 		E4595E6EBA62F7D252686A00 /* Pods */ = {
@@ -193,8 +249,9 @@
 				CE36F6375E5165A00737B8FE /* Pods-Senergy-tvOS.release.xcconfig */,
 				8DD4F5B12AB7C2CF6C417EE7 /* Pods-Senergy-tvOSTests.debug.xcconfig */,
 				BFC1EFD7015472F57B4804E5 /* Pods-Senergy-tvOSTests.release.xcconfig */,
+				31E6A6F0272879F1F5EBBE5E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				134C8C28763F9E836F0832AA /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -230,10 +287,12 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				BB67E60424A4B4B400AADBE1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BB67E5FF24A4B4B400AADBE1 /* PBXTargetDependency */,
 			);
 			name = Senergy;
 			productName = Senergy;
@@ -279,12 +338,31 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* Senergy-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		BB67E5F824A4B4B400AADBE1 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB67E60124A4B4B400AADBE1 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				ECE8BEA4EDDE19B3EB5056F2 /* [CP] Check Pods Manifest.lock */,
+				BB67E5F524A4B4B400AADBE1 /* Sources */,
+				BB67E5F624A4B4B400AADBE1 /* Frameworks */,
+				BB67E5F724A4B4B400AADBE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = BB67E5F924A4B4B400AADBE1 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -292,6 +370,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 8WNR3BTVZT;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -302,6 +381,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					BB67E5F824A4B4B400AADBE1 = {
+						CreatedOnToolsVersion = 11.5;
+						DevelopmentTeam = 8WNR3BTVZT;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -322,6 +406,7 @@
 				00E356ED1AD99517003FC87E /* SenergyTests */,
 				2D02E47A1E0B4A5D006451C7 /* Senergy-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* Senergy-tvOSTests */,
+				BB67E5F824A4B4B400AADBE1 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -352,6 +437,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB67E5F724A4B4B400AADBE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -477,6 +569,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ECE8BEA4EDDE19B3EB5056F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -552,6 +666,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB67E5F524A4B4B400AADBE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB67E5FC24A4B4B400AADBE1 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -564,6 +686,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* Senergy-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		BB67E5FF24A4B4B400AADBE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB67E5F824A4B4B400AADBE1 /* OneSignalNotificationServiceExtension */;
+			targetProxy = BB67E5FE24A4B4B400AADBE1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -627,9 +754,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2ED9DA921F6F8A415B80E429 /* Pods-Senergy.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Senergy/Senergy.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8WNR3BTVZT;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -654,9 +784,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FE783BD76A3AC9BCFF44613 /* Pods-Senergy.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Senergy/Senergy.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8WNR3BTVZT;
 				INFOPLIST_FILE = Senergy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -894,6 +1027,63 @@
 			};
 			name = Release;
 		};
+		BB67E60224A4B4B400AADBE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31E6A6F0272879F1F5EBBE5E /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8WNR3BTVZT;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.Senergy.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BB67E60324A4B4B400AADBE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 134C8C28763F9E836F0832AA /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8WNR3BTVZT;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.Senergy.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -938,6 +1128,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB67E60124A4B4B400AADBE1 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB67E60224A4B4B400AADBE1 /* Debug */,
+				BB67E60324A4B4B400AADBE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

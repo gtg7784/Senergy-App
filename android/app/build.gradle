@@ -5,12 +5,13 @@ import com.android.build.OutputFile
 // add onesignal
 buildscript {
     repositories {
-        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
     }
     dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.6, 0.99.99]'
     }
 }
+
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 /**
@@ -133,6 +134,7 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion '27.0.3'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
