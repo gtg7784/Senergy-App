@@ -1,4 +1,5 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
 import OneSignal from 'react-native-onesignal';
 import {oneSignalId} from 'react-native-dotenv';
 import {NavigationContainer} from '@react-navigation/native';
@@ -61,14 +62,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <MainStack.Navigator headerMode={'none'}>
-          <MainStack.Screen
-            name={MainConst.LoginScreen}
-            component={LoginScreen}
-          />
-        </MainStack.Navigator>
-      </NavigationContainer>
+      <>
+        <StatusBar barStyle="light-content" />
+        <NavigationContainer>
+          <MainStack.Navigator headerMode={'none'}>
+            <MainStack.Screen
+              name={MainConst.LoginScreen}
+              component={LoginScreen}
+            />
+          </MainStack.Navigator>
+        </NavigationContainer>
+      </>
     );
   }
 }

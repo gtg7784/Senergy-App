@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
+import LoginModal from '../components/LoginModal';
 import colors from '../constants/colors';
 import images from '../constants/images';
 
@@ -77,25 +78,34 @@ const styles = StyleSheet.create({
 });
 
 const LoginScreen = () => {
+  const [isModal, setIsModal] = useState(false);
   return (
-    <View style={styles.container}>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>SENERGY</Text>
-        <Text style={styles.subTitle}>하루 5초, 24시간을 유용하게</Text>
-        <Image style={styles.illust} source={images.mainIllust} />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>로그인</Text>
-        </TouchableOpacity>
-        <View style={styles.bottomWrap}>
-          <Text style={styles.bottomText}>
-            아직 시너지를 사용하고 있지 않으신가요?
-          </Text>
-          <TouchableHighlight>
-            <Text style={styles.bottomBtnText}>가입하기</Text>
-          </TouchableHighlight>
-        </View>
-      </SafeAreaView>
-    </View>
+    <>
+      <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+          <Text style={styles.title}>SENERGY</Text>
+          <Text style={styles.subTitle}>하루 5초, 24시간을 유용하게</Text>
+          <Image style={styles.illust} source={images.mainIllust} />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => setIsModal(true)}>
+            <Text style={styles.buttonText}>로그인</Text>
+          </TouchableOpacity>
+          <View style={styles.bottomWrap}>
+            <Text style={styles.bottomText}>
+              아직 시너지를 사용하고 있지 않으신가요?
+            </Text>
+            <TouchableHighlight>
+              <Text style={styles.bottomBtnText}>가입하기</Text>
+            </TouchableHighlight>
+          </View>
+        </SafeAreaView>
+      </View>
+      <LoginModal
+        isVisible={isModal}
+        changeValue={() => setIsModal(!isModal)}
+      />
+    </>
   );
 };
 
