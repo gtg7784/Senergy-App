@@ -6,14 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import LoginScreen from './screens/LoginScreen';
-
-type MainParamList = {
-  LoginScreen: undefined;
-};
-
-enum MainConst {
-  LoginScreen = 'LoginScreen',
-}
+import RegisterScreen from './screens/RegisterScreen';
 
 declare const global: {HermesInternal: null | {}};
 
@@ -66,9 +59,10 @@ class App extends React.Component {
         <StatusBar barStyle="light-content" />
         <NavigationContainer>
           <MainStack.Navigator headerMode={'none'}>
+            <MainStack.Screen name={'LoginScreen'} component={LoginScreen} />
             <MainStack.Screen
-              name={MainConst.LoginScreen}
-              component={LoginScreen}
+              name={'RegisterScreen'}
+              component={RegisterScreen}
             />
           </MainStack.Navigator>
         </NavigationContainer>
