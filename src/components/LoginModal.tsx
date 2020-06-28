@@ -6,6 +6,7 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import Modal from 'react-native-modal';
 
 import Input from './Input';
@@ -13,6 +14,7 @@ import Button from './Button';
 import colors from '../constants/colors';
 
 interface Props {
+  navigation: StackNavigationProp<MainParamList, 'LoginScreen'>;
   isVisible: boolean;
   changeValue: () => void;
 }
@@ -34,10 +36,10 @@ const styles = StyleSheet.create({
   forgetPwBtn: {
     marginBottom: 26,
   },
-  flexRowWrap: {
+  forgetPwWrap: {
     width: Dimensions.get('window').width - 60,
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   forgetPw: {
@@ -47,14 +49,22 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     color: colors.BLACK,
   },
-  notUsingYet: {
+  registerWrap: {
+    width: Dimensions.get('window').width - 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,
+  },
+  registerText: {
     fontSize: 14,
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0,
     color: colors.BLACK,
+    marginLeft: 6,
   },
-  registerText: {
+  registerLabel: {
     fontSize: 14,
     fontWeight: 'normal',
     fontStyle: 'normal',
@@ -67,7 +77,13 @@ const LoginModal: React.FC<Props> = (props: Props) => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
 
+  const onRouteRegister = () => {
+    props.changeValue();
+    props.navigation.navigate('RegisterScreen');
+  };
+
   const onLogin = () => {};
+
   return (
     <Modal
       isVisible={props.isVisible}
@@ -76,31 +92,28 @@ const LoginModal: React.FC<Props> = (props: Props) => {
       onSwipeComplete={() => props.changeValue()}
       style={styles.modal}>
       <View style={styles.container}>
-        <Input
-          label="아이디"
-          value={id}
-          onChangeText={setId}
-          marginBottom={26}
-        />
+        <Input label="아이디" value={id} onChange={setId} marginBottom={26} />
         <Input
           label="비밀번호"
           value={pw}
-          onChangeText={setPw}
+          onChange={setPw}
           marginBottom={10}
           password
         />
-        <View style={styles.flexRowWrap}>
+        <View style={styles.forgetPwWrap}>
           <TouchableHighlight style={styles.forgetPwBtn}>
             <Text style={styles.forgetPw}>비밀번호를 잊으셨나요?</Text>
           </TouchableHighlight>
         </View>
         <Button label="로그인" onPress={() => onLogin()} />
-        <View style={[styles.flexRowWrap, {marginTop: 30}]}>
-          <Text style={styles.notUsingYet}>
+        <View style={styles.registerWrap}>
+          <Text style={styles.registerText}>
             아직 시너지를 사용하고 있지 않으신가요?
           </Text>
-          <TouchableHighlight>
-            <Text style={styles.registerText}>가입하기</Text>
+          <TouchableHighlight
+            underlayColor={colors.TRANSPARENT}
+            onPress={() => onRouteRegister()}>
+            <Text style={styles.registerLabel}>가입하기</Text>
           </TouchableHighlight>
         </View>
       </View>

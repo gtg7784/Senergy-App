@@ -32,14 +32,14 @@ const styles = StyleSheet.create({
 interface Props {
   label: string;
   value: string;
-  onChangeText: (text: string) => void;
+  onChange: (text: string) => void;
   password?: boolean;
   marginBottom?: number;
 }
 
 const Input: React.FC<Props> = ({
   label = '',
-  onChangeText,
+  onChange,
   value,
   password = false,
   marginBottom = 0,
@@ -49,7 +49,7 @@ const Input: React.FC<Props> = ({
       <Text style={styles.label}>{label}</Text>
       <TextInput
         style={styles.input}
-        onChangeText={(text) => onChangeText(text)}
+        onChangeText={(text) => onChange(text)}
         value={value}
         secureTextEntry={password}
       />
