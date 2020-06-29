@@ -20,14 +20,14 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 1,
-    color: '#ffffff',
+    color: colors.WHITE,
   },
   subTitle: {
     fontSize: 18,
     fontWeight: 'normal',
     fontStyle: 'normal',
     letterSpacing: 0,
-    color: '#ffffff',
+    color: colors.WHITE,
   },
   illust: {
     width: 260,
