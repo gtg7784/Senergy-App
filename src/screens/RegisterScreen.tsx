@@ -94,7 +94,7 @@ const RegisterScreen: React.FC<Props> = ({navigation}: Props) => {
   const [time, setTime] = useState('1');
 
   return (
-    <ScrollView>
+    <ScrollView showsHorizontalScrollIndicator={false}>
       <Container style={styles.container}>
         <View style={styles.headerSection}>
           <Text style={styles.headerTitle}>
@@ -175,7 +175,9 @@ const RegisterScreen: React.FC<Props> = ({navigation}: Props) => {
           </View>
           <View style={styles.rowWrap}>
             <Text style={styles.goLoginText}>이미 계정이 있으신가요?</Text>
-            <TouchableHighlight onPress={() => navigation.goBack()}>
+            <TouchableHighlight
+              onPress={() => navigation.goBack()}
+              underlayColor={colors.TRANSPARENT}>
               <Text style={styles.goLoginBtnText}>로그인하기</Text>
             </TouchableHighlight>
           </View>
