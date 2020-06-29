@@ -7,6 +7,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import MainScreen from './screens/MainScreen';
 
 declare const global: {HermesInternal: null | {}};
 
@@ -64,6 +65,7 @@ class App extends React.Component {
               name={'RegisterScreen'}
               component={RegisterScreen}
             />
+            <MainStack.Screen name={'MainScreen'} component={MainScreen} />
           </MainStack.Navigator>
         </NavigationContainer>
       </>
