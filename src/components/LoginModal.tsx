@@ -6,18 +6,13 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
+import {StackActions} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import Modal from 'react-native-modal';
 
 import Input from './Input';
 import Button from './Button';
 import colors from '../constants/colors';
-
-interface Props {
-  navigation: StackNavigationProp<MainParamList, 'LoginScreen'>;
-  isVisible: boolean;
-  changeValue: () => void;
-}
 
 const styles = StyleSheet.create({
   modal: {
@@ -73,6 +68,12 @@ const styles = StyleSheet.create({
   },
 });
 
+interface Props {
+  navigation: StackNavigationProp<MainParamList, 'LoginScreen'>;
+  isVisible: boolean;
+  changeValue: () => void;
+}
+
 const LoginModal: React.FC<Props> = (props: Props) => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
@@ -82,7 +83,10 @@ const LoginModal: React.FC<Props> = (props: Props) => {
     props.navigation.navigate('RegisterScreen');
   };
 
-  const onLogin = () => {};
+  const onLogin = () => {
+    props.changeValue();
+    props.navigation.dispatch(StackActions.replace('MainScreen'));
+  };
 
   return (
     <Modal
