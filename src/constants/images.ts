@@ -3,4 +3,5 @@ export default {
   cameraIcon: require('../assets/cameraIcon.png'),
   arrowDown: require('../assets/arrowDown.png'),
   arrowRight: require('../assets/arrowRight.png'),
+  backIcon: require('../assets/backIcon.png'),
 };

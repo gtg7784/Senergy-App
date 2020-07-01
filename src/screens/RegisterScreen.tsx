@@ -9,6 +9,8 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import ImagePicker from 'react-native-image-picker';
+
 import Container from '../components/Container';
 import Input from '../components/Input';
 import CheckList from '../components/CheckList';
@@ -84,6 +86,14 @@ interface Props {
   navigation: StackNavigationProp<MainParamList, 'RegisterScreen'>;
 }
 
+const options = {
+  title: '프로필 사진을 선택하세요',
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
+
 const RegisterScreen: React.FC<Props> = ({navigation}: Props) => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
@@ -92,6 +102,28 @@ const RegisterScreen: React.FC<Props> = ({navigation}: Props) => {
   const [selectedIndex, setIndex] = useState(0);
   const [meridiem, setMeridiem] = useState('오전');
   const [time, setTime] = useState('1');
+  const [profile, setProfile] = useState('');
+
+  const onClickProfile = async () => {
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const uri = response.uri;
+
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+        setProfile(uri);
+      }
+    });
+  };
 
   return (
     <ScrollView showsHorizontalScrollIndicator={false}>
@@ -101,7 +133,9 @@ const RegisterScreen: React.FC<Props> = ({navigation}: Props) => {
             반가워요!{'\n'}
             정보를 입력해주세요
           </Text>
-          <TouchableOpacity style={styles.headerBtn}>
+          <TouchableOpacity
+            style={styles.headerBtn}
+            onPress={() => onClickProfile()}>
             <Image source={images.cameraIcon} style={styles.headerIcn} />
           </TouchableOpacity>
         </View>

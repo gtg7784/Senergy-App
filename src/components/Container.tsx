@@ -7,7 +7,6 @@ const Container: React.FC<ViewProps> = (props) => {
 
   return (
     <View
-      {...props}
       style={[
         props.style,
         {
@@ -17,6 +16,7 @@ const Container: React.FC<ViewProps> = (props) => {
           paddingRight: insets.right,
         },
       ]}
+      children={props.children}
     />
   );
 };

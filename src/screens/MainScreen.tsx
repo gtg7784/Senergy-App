@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   todayCard: {
     width: 335,
-    height: 200,
+    height: 180,
     paddingVertical: 26,
   },
   todayTitle: {
@@ -145,62 +145,54 @@ const styles = StyleSheet.create({
   },
 });
 
-interface DataType {
-  date: string | Date;
-  status: 1 | 2 | 3;
-  sleepData: {
-    sleep: number[];
-    awake: number[];
-  };
-}
 interface Props {
   navigation: StackNavigationProp<MainParamList, 'MainScreen'>;
 }
-const MainScreen: React.FC<Props> = () => {
+const MainScreen: React.FC<Props> = ({navigation}: Props) => {
   const {top} = useSafeArea();
   const animatedHeight = new Animated.Value(250 + top);
   const [mainTypoColor, setMainTypoColor] = useState(colors.BLACK);
   const date = new Date();
   const days = ['일', '월', '화', '수', '목', '금', '토'];
-  const data: DataType[] = [
+  const datas: DataType[] = [
     {
       date: '20/06/25',
       status: 1,
       sleepData: {
-        sleep: [1, 4, 5, 8, 9],
-        awake: [2, 3, 6, 7],
+        sleep: 3,
+        awake: 7,
       },
     },
     {
       date: '20/06/25',
       status: 1,
       sleepData: {
-        sleep: [1, 4, 5, 8, 9],
-        awake: [2, 3, 6, 7],
+        sleep: 6,
+        awake: 6,
       },
     },
     {
       date: '20/06/25',
       status: 1,
       sleepData: {
-        sleep: [1, 4, 5, 8, 9],
-        awake: [2, 3, 6, 7],
+        sleep: 8,
+        awake: 4,
       },
     },
     {
       date: '20/06/25',
       status: 1,
       sleepData: {
-        sleep: [1, 4, 5, 8, 9],
-        awake: [2, 3, 6, 7],
+        sleep: 9,
+        awake: 3,
       },
     },
     {
       date: '20/06/25',
       status: 1,
       sleepData: {
-        sleep: [1, 4, 5, 8, 9],
-        awake: [2, 3, 6, 7],
+        sleep: 10,
+        awake: 2,
       },
     },
   ];
@@ -215,14 +207,7 @@ const MainScreen: React.FC<Props> = () => {
     return statusString[status];
   };
 
-  const getTotalTime = (data: number[]): number => {
-    let sum = 0;
-    data.map((item) => (sum += item));
-
-    return sum;
-  };
-
-  const onScroll = (e) => {
+  const onScroll = (e: any) => {
     let height;
 
     console.log(e.nativeEvent.contentOffset.y);
@@ -230,7 +215,7 @@ const MainScreen: React.FC<Props> = () => {
     if (e.nativeEvent.contentOffset.y < 0) {
       height = 250 + top + e.nativeEvent.contentOffset.y;
     } else {
-      height = 250 + top + e.nativeEvent.contentOffset.y * 2.8;
+      height = 250 + top + e.nativeEvent.contentOffset.y * 2.82;
     }
 
     if (e.nativeEvent.contentOffset.y > 50) {
@@ -242,20 +227,32 @@ const MainScreen: React.FC<Props> = () => {
     animatedHeight.setValue(height);
   };
 
+  const onRouteDetail = (data: DataType) => {
+    navigation.navigate('DetailScreen', {data: data});
+  };
+
   return (
     <ScrollView onScroll={(e) => onScroll(e)} scrollEventThrottle={16}>
       <Container style={styles.container}>
         <Animated.View
           style={[
             styles.headerSection,
-            {height: animatedHeight, top: -top, paddingTop: top + 72},
+            {
+              height: animatedHeight,
+              top: -top,
+              paddingTop: top + 72,
+              minHeight: 250 + top,
+            },
           ]}>
           <Text style={styles.headerText}>
             {`${date.getFullYear()}/${date.getMonth()}/${date.getDate()} ${
               days[date.getDay()]
             }`}
           </Text>
-          <Image style={styles.headerProfile} source={{uri: ''}} />
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SettingScreen')}>
+            <Image style={styles.headerProfile} source={{uri: ''}} />
+          </TouchableOpacity>
         </Animated.View>
         <View style={[styles.bodySection, {marginTop: 98 + top}]}>
           <Card style={styles.mainCard}>
@@ -286,16 +283,16 @@ const MainScreen: React.FC<Props> = () => {
             </View>
           </Card>
           <View style={styles.cardListWrap}>
-            {data.map((item, index) => (
+            {datas.map((item, index) => (
               <Card style={styles.cardListContainer} key={index}>
                 <View style={styles.cardListTextWrap}>
                   <Text style={styles.cardListTitle}>{item.date}</Text>
                   <Text style={styles.cardListDescription}>
                     {statusToString(item.status)} - 수면시간:{' '}
-                    {getTotalTime(item.sleepData.sleep)}
+                    {item.sleepData.sleep}
                   </Text>
                 </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => onRouteDetail(item)}>
                   <Image
                     source={images.arrowRight}
                     style={styles.cardBtnImage}

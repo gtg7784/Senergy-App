@@ -80,8 +80,8 @@ const DropDown: React.FC<Props> = (props) => {
     <View style={styles.container}>
       <Text style={styles.label}>{props.label}</Text>
       <View style={styles.pickerRow}>
-        {props.item.map((item) => (
-          <View style={styles.pickerWrap}>
+        {props.item.map((item, index) => (
+          <View style={styles.pickerWrap} key={index}>
             <RNPickerSelect
               style={selectPicker}
               onValueChange={(value) => item.setValue(value)}
