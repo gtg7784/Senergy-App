@@ -19,9 +19,9 @@ declare module 'react-native-onesignal' {
 
   interface Settings {
     kOSSettingsKeyAutoPrompt: boolean;
-    kOSSettingsKeyInAppLaunchURL?: boolean;
-    kOSSSettingsKeyPromptBeforeOpeningPushURL?: boolean;
-    kOSSettingsKeyInFocusDisplayOption?: InFocusDisplayOption;
+    kOSSettingsKeyInAppLaunchURL: boolean;
+    kOSSSettingsKeyPromptBeforeOpeningPushURL: boolean;
+    kOSSettingsKeyInFocusDisplayOption: InFocusDisplayOption;
   }
 
   interface PushData {
