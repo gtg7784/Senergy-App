@@ -3,13 +3,6 @@ import {ViewStyle} from 'react-native';
 import {BarChart, Grid} from 'react-native-svg-charts';
 import colors from '../constants/colors';
 
-interface contentInsetType {
-  top?: number;
-  left?: number;
-  right?: number;
-  bottom?: number;
-}
-
 interface Props {
   data: number[];
   style: ViewStyle;

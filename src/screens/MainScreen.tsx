@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useSafeArea} from 'react-native-safe-area-context';
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     marginVertical: 30,
   },
   todayCard: {
-    width: 335,
+    width: Dimensions.get('window').width - 80,
     height: 180,
     paddingVertical: 26,
   },
@@ -240,7 +241,7 @@ const MainScreen: React.FC<Props> = ({navigation}: Props) => {
             {
               height: animatedHeight,
               top: -top,
-              paddingTop: top + 72,
+              paddingTop: Platform.OS === 'android' ? 24 : top + 72,
               minHeight: 250 + top,
             },
           ]}>
@@ -254,7 +255,11 @@ const MainScreen: React.FC<Props> = ({navigation}: Props) => {
             <Image style={styles.headerProfile} source={{uri: ''}} />
           </TouchableOpacity>
         </Animated.View>
-        <View style={[styles.bodySection, {marginTop: 98 + top}]}>
+        <View
+          style={[
+            styles.bodySection,
+            {marginTop: Platform.OS === 'android' ? 128 : 98 + top},
+          ]}>
           <Card style={styles.mainCard}>
             <BarGraph
               data={[10, 7, 8, 9, 5, 4, 9.5]}

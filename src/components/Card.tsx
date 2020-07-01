@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     backgroundColor: colors.WHITE,
     borderRadius: 10,
+    elevation: 6,
   },
 });
 

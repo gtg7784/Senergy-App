@@ -7,6 +7,7 @@ import {
   Image,
   Text,
   Dimensions,
+  Platform,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useSafeArea} from 'react-native-safe-area-context';
@@ -14,6 +15,7 @@ import Animated from 'react-native-reanimated';
 
 import Container from '../components/Container';
 import Card from '../components/Card';
+import SleepGraph from '../components/SleepGraph';
 import colors from '../constants/colors';
 import images from '../constants/images';
 
@@ -71,11 +73,53 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-    height: '100%',
+    height: Dimensions.get('window').height - 140,
   },
   mainGraphCard: {
     width: Dimensions.get('window').width - 60,
     height: 180,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mainGraphStyle: {
+    width: '80%',
+    height: 160,
+  },
+  statusCardContainer: {
+    width: Dimensions.get('window').width - 60,
+    height: 148,
+    marginTop: 40,
+    paddingHorizontal: 20,
+    paddingVertical: 25,
+  },
+  statusTitleText: {
+    fontSize: 20,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    letterSpacing: 0,
+    color: colors.BLUE,
+  },
+  statusTextWrap: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    marginTop: 12,
+  },
+  statusTextHours: {
+    fontSize: 20,
+    fontWeight: '500',
+    fontStyle: 'normal',
+    letterSpacing: 0,
+    textAlign: 'center',
+    color: colors.BLACK,
+    marginRight: 10,
+  },
+  statusTextContent: {
+    fontSize: 18,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    letterSpacing: 0,
+    color: colors.BLACK,
   },
 });
 
@@ -108,7 +152,7 @@ const DetailScreen: React.FC<Props> = ({navigation}: Props) => {
             {
               height: animatedHeight,
               top: -top,
-              paddingTop: top + 72,
+              paddingTop: Platform.OS === 'android' ? 24 : top + 72,
               minHeight: 250 + top,
             },
           ]}>
@@ -125,7 +169,20 @@ const DetailScreen: React.FC<Props> = ({navigation}: Props) => {
           </View>
         </Animated.View>
         <View style={[styles.bodySection, {top: 140 + top}]}>
-          <Card style={styles.mainGraphCard} />
+          <Card style={styles.mainGraphCard}>
+            <SleepGraph data={[7, 3]} style={styles.mainGraphStyle} />
+          </Card>
+          <Card style={styles.statusCardContainer}>
+            <Text style={styles.statusTitleText}>나는 오늘</Text>
+            <View style={styles.statusTextWrap}>
+              <Text style={styles.statusTextHours}>03:00</Text>
+              <Text style={styles.statusTextContent}>에 잠들었어요</Text>
+            </View>
+            <View style={styles.statusTextWrap}>
+              <Text style={styles.statusTextHours}>07:00</Text>
+              <Text style={styles.statusTextContent}>에 기상했어요</Text>
+            </View>
+          </Card>
         </View>
       </Container>
     </ScrollView>
