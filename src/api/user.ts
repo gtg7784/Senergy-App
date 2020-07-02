@@ -22,17 +22,12 @@ const user = {
 
     return response;
   },
-  userTokenAuthCreate: async (data: FormData) => {
-    const token = await AsyncStorage.getItem('token');
-    const response = axios.post('/user/token/auth/', data, {
-      headers: {
-        Authorization: token,
-      },
-    });
+  userTokenAuthCreate: (data: FormData) => {
+    const response = axios.post('/user/token/auth/', data);
 
     return response;
   },
-  user_token_refresh_create: async (data: FormData) => {
+  userTokenRefreshCreate: async (data: FormData) => {
     const token = await AsyncStorage.getItem('token');
     const response = axios.post('/user/token/refresh/', data, {
       headers: {
@@ -41,6 +36,14 @@ const user = {
     });
 
     return response;
+  },
+  userReigisterCraete: async (data: FormData) => {
+    const response = await axios.post('/user/register/', data);
+
+    return response;
+  },
+  logout: () => {
+    AsyncStorage.clear();
   },
 };
 
