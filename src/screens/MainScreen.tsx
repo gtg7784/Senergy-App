@@ -165,7 +165,7 @@ const MainScreen: React.FC<Props> = ({navigation}: Props) => {
       },
     },
     {
-      date: '20/06/25',
+      date: '20/06/24',
       status: 1,
       sleepData: {
         sleep: 6,
@@ -173,7 +173,7 @@ const MainScreen: React.FC<Props> = ({navigation}: Props) => {
       },
     },
     {
-      date: '20/06/25',
+      date: '20/06/23',
       status: 1,
       sleepData: {
         sleep: 8,
@@ -181,7 +181,7 @@ const MainScreen: React.FC<Props> = ({navigation}: Props) => {
       },
     },
     {
-      date: '20/06/25',
+      date: '20/06/22',
       status: 1,
       sleepData: {
         sleep: 9,
@@ -189,7 +189,7 @@ const MainScreen: React.FC<Props> = ({navigation}: Props) => {
       },
     },
     {
-      date: '20/06/25',
+      date: '20/06/21',
       status: 1,
       sleepData: {
         sleep: 10,
@@ -279,7 +279,7 @@ const MainScreen: React.FC<Props> = ({navigation}: Props) => {
                 잤어요.
               </Text>
               <View style={styles.todayDivider} />
-              <Text style={styles.todayText}>x점 줬을 때 문장</Text>
+              <Text style={styles.todayText}>오늘은 피곤한 날</Text>
               <View style={styles.todayDivider} />
               <Text style={styles.todayText}>
                 머리가 아파요{'\n'}
