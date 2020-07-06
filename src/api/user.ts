@@ -37,8 +37,9 @@ const user = {
 
     return response;
   },
-  userReigisterCraete: async (data: FormData) => {
-    const response = await axios.post('/user/register/', data);
+  userReigisterCraete: (data: FormData) => {
+    console.log('data', data);
+    const response = axios.post('/user/register/', data);
 
     return response;
   },
