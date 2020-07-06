@@ -129,7 +129,7 @@ interface Props {
 const DetailScreen: React.FC<Props> = ({navigation}: Props) => {
   const {top} = useSafeArea();
   const animatedHeight = new Animated.Value(250 + top);
-  const onScroll = (e) => {
+  const onScroll = (e: any) => {
     let height;
 
     console.log(e.nativeEvent.contentOffset.y);

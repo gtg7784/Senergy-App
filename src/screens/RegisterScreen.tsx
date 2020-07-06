@@ -7,6 +7,8 @@ import {
   Image,
   ScrollView,
   TouchableHighlight,
+  StatusBar,
+  StatusBarStyle,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import ImagePicker from 'react-native-image-picker';
@@ -18,6 +20,7 @@ import DropDown from '../components/Dropdown';
 import Button from '../components/Button';
 import colors from '../constants/colors';
 import images from '../constants/images';
+import api from '../api';
 
 const styles = StyleSheet.create({
   container: {
@@ -98,11 +101,13 @@ const RegisterScreen: React.FC<Props> = ({navigation}: Props) => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+  const [email, setEmail] = useState('');
   const [weight, setWeight] = useState('');
   const [selectedIndex, setIndex] = useState(0);
   const [meridiem, setMeridiem] = useState('오전');
   const [time, setTime] = useState('1');
   const [profile, setProfile] = useState('');
+  const [barStyle, setBarStyle] = useState('light-content');
 
   const onClickProfile = async () => {
     ImagePicker.showImagePicker(options, (response) => {
@@ -125,99 +130,151 @@ const RegisterScreen: React.FC<Props> = ({navigation}: Props) => {
     });
   };
 
+  const onScroll = (e: any) => {
+    if (e.nativeEvent.contentOffset.y > 200) {
+      setBarStyle('dark-content');
+    } else {
+      setBarStyle('light-content');
+    }
+  };
+
+  const onSignUp = async () => {
+    // - username: string
+    // - password1: string | password
+    // - password2: string | password confirmation
+    // - name: string | the user's name
+    // - weight: float
+    // - average_sleep_time : float
+    // - sleep_at: string | time format | nullable
+    // - image: string | image url | nullable
+
+    let formData = new FormData();
+    formData.append('username', id);
+    formData.append('email', email);
+    formData.append('password1', pw);
+    formData.append('password2', pw);
+    formData.append('name', name);
+    formData.append('weight', weight);
+    formData.append('average_sleep_time', selectedIndex);
+    formData.append('sleep_at', time);
+    if (profile === '') {
+      formData.append('image', null);
+    } else {
+      formData.append('image', profile);
+    }
+
+    const response = await api.UserApi.userReigisterCraete(formData);
+
+    console.log(response);
+  };
+
   return (
-    <ScrollView showsHorizontalScrollIndicator={false}>
-      <Container style={styles.container}>
-        <View style={styles.headerSection}>
-          <Text style={styles.headerTitle}>
-            반가워요!{'\n'}
-            정보를 입력해주세요
-          </Text>
-          <TouchableOpacity
-            style={styles.headerBtn}
-            onPress={() => onClickProfile()}>
-            <Image source={images.cameraIcon} style={styles.headerIcn} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.bodySection}>
-          <Input
-            label="이름"
-            value={name}
-            onChange={setName}
-            marginBottom={26}
-          />
-          <Input label="아이디" value={id} onChange={setId} marginBottom={26} />
-          <Input
-            label="비밀번호"
-            value={pw}
-            onChange={setPw}
-            marginBottom={26}
-            password
-          />
-          <Input
-            label="몸무게 (단위 : KG)"
-            value={weight}
-            onChange={setWeight}
-            marginBottom={26}
-          />
-          <CheckList
-            label="평소 몇시간 주무시나요?"
-            arr={[3, 4, 5, 6, 7, 8, 9]}
-            selectedIndex={selectedIndex}
-            setIndex={setIndex}
-            marginBottom={26}
-          />
-          <DropDown
-            label="평소 몇시에 주무시나요?"
-            item={[
-              {
-                value: meridiem,
-                setValue: setMeridiem,
-                array: [
-                  {
-                    label: '오전',
-                    value: 'AM',
-                  },
-                  {
-                    label: '오후',
-                    value: 'PM',
-                  },
-                ],
-              },
-              {
-                value: time,
-                setValue: setTime,
-                array: [
-                  {label: '1시', value: '1'},
-                  {label: '2시', value: '2'},
-                  {label: '3시', value: '3'},
-                  {label: '4시', value: '4'},
-                  {label: '5시', value: '5'},
-                  {label: '6시', value: '6'},
-                  {label: '7시', value: '7'},
-                  {label: '8시', value: '8'},
-                  {label: '9시', value: '9'},
-                  {label: '10시', value: '10'},
-                  {label: '11시', value: '11'},
-                  {label: '12시', value: '12'},
-                ],
-              },
-            ]}
-          />
-          <View style={styles.rowWrap}>
-            <Button label="가입하기" onPress={() => {}} />
+    <>
+      <StatusBar barStyle={barStyle as StatusBarStyle} />
+      <ScrollView onScroll={(e) => onScroll(e)} scrollEventThrottle={16}>
+        <Container style={styles.container}>
+          <View style={styles.headerSection}>
+            <Text style={styles.headerTitle}>
+              반가워요!{'\n'}
+              정보를 입력해주세요
+            </Text>
+            <TouchableOpacity
+              style={styles.headerBtn}
+              onPress={() => onClickProfile()}>
+              <Image source={images.cameraIcon} style={styles.headerIcn} />
+            </TouchableOpacity>
           </View>
-          <View style={styles.rowWrap}>
-            <Text style={styles.goLoginText}>이미 계정이 있으신가요?</Text>
-            <TouchableHighlight
-              onPress={() => navigation.goBack()}
-              underlayColor={colors.TRANSPARENT}>
-              <Text style={styles.goLoginBtnText}>로그인하기</Text>
-            </TouchableHighlight>
+          <View style={styles.bodySection}>
+            <Input
+              label="이름"
+              value={name}
+              onChange={setName}
+              marginBottom={26}
+            />
+            <Input
+              label="아이디"
+              value={id}
+              onChange={setId}
+              marginBottom={26}
+            />
+            <Input
+              label="비밀번호"
+              value={pw}
+              onChange={setPw}
+              marginBottom={26}
+              password
+            />
+            <Input
+              label="이메일"
+              value={email}
+              onChange={setEmail}
+              marginBottom={26}
+            />
+            <Input
+              label="몸무게 (단위 : KG)"
+              value={weight}
+              onChange={setWeight}
+              marginBottom={26}
+            />
+            <CheckList
+              label="평소 몇시간 주무시나요?"
+              arr={[3, 4, 5, 6, 7, 8, 9]}
+              selectedIndex={selectedIndex}
+              setIndex={setIndex}
+              marginBottom={26}
+            />
+            <DropDown
+              label="평소 몇시에 주무시나요?"
+              item={[
+                {
+                  value: meridiem,
+                  setValue: setMeridiem,
+                  array: [
+                    {
+                      label: '오전',
+                      value: 'AM',
+                    },
+                    {
+                      label: '오후',
+                      value: 'PM',
+                    },
+                  ],
+                },
+                {
+                  value: time,
+                  setValue: setTime,
+                  array: [
+                    {label: '1시', value: '1'},
+                    {label: '2시', value: '2'},
+                    {label: '3시', value: '3'},
+                    {label: '4시', value: '4'},
+                    {label: '5시', value: '5'},
+                    {label: '6시', value: '6'},
+                    {label: '7시', value: '7'},
+                    {label: '8시', value: '8'},
+                    {label: '9시', value: '9'},
+                    {label: '10시', value: '10'},
+                    {label: '11시', value: '11'},
+                    {label: '12시', value: '12'},
+                  ],
+                },
+              ]}
+            />
+            <View style={styles.rowWrap}>
+              <Button label="가입하기" onPress={() => onSignUp()} />
+            </View>
+            <View style={styles.rowWrap}>
+              <Text style={styles.goLoginText}>이미 계정이 있으신가요?</Text>
+              <TouchableHighlight
+                onPress={() => navigation.goBack()}
+                underlayColor={colors.TRANSPARENT}>
+                <Text style={styles.goLoginBtnText}>로그인하기</Text>
+              </TouchableHighlight>
+            </View>
           </View>
-        </View>
-      </Container>
-    </ScrollView>
+        </Container>
+      </ScrollView>
+    </>
   );
 };
 
